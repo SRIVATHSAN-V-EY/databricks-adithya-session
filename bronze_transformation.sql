@@ -1,6 +1,6 @@
 --bronze_transformation.sql
 
-CREATE STREAMING LIVE TABLE bronze.fact_sales
+CREATE STREAMING LIVE TABLE workspace.bronze.fact_sales
 AS
 select * from cloud_files(
 '/Volumes/workspace/landing_zone/fact_and_dimensions_files/fact_sales',
@@ -8,7 +8,7 @@ select * from cloud_files(
 map('header','true')
 );
 
-CREATE STREAMING LIVE TABLE bronze.dim_products
+CREATE STREAMING LIVE TABLE workspace.bronze.dim_products
 AS
 select * from cloud_files(
 '/Volumes/workspace/landing_zone/fact_and_dimensions_files/dim_products',
@@ -16,7 +16,7 @@ select * from cloud_files(
 map('header','true')
 );
 
-CREATE STREAMING LIVE TABLE bronze.dim_customers
+CREATE STREAMING LIVE TABLE workspace.bronze.dim_customers
 AS
 select * from cloud_files(
 '/Volumes/workspace/landing_zone/fact_and_dimensions_files/dim_customers',
@@ -24,12 +24,13 @@ select * from cloud_files(
 map('header','true')
 );
 
-CREATE STREAMING LIVE TABLE bronze.dim_regions
+CREATE STREAMING LIVE TABLE workspace.bronze.dim_regions
 AS
 select * from cloud_files(
 '/Volumes/workspace/landing_zone/fact_and_dimensions_files/dim_regions',
 'csv',
 map('header','true')
 );
+
 
 
