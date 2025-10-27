@@ -11,7 +11,7 @@ cast(region_id as INT) as region_id,
 cast(channel as STRING) as channel,
 cast(promo_code as STRING) as promo_code
 
-from workspace.bronze.sales;
+from stream(workspace.bronze.sales);
 
 CREATE STREAMING LIVE TABLE workspace.silver.customers
 AS
@@ -23,7 +23,7 @@ cast(email as STRING) as email,
 to_date(join_date,'dd/MM/yyyy') as join_date,
 cast(vip as STRING) as vip
 
-from workspace.bronze.customers;
+from stream(workspace.bronze.customers);
 
 CREATE STREAMING LIVE TABLE workspace.silver.products
 AS
@@ -34,7 +34,7 @@ cast(category as STRING) as category,
 cast(price as INT) as price,
 cast(in_stock as INT) as in_stock
 
-from workspace.bronze.products;
+from stream(workspace.bronze.products);
 
 CREATE STREAMING LIVE TABLE workspace.silver.regions
 AS
@@ -43,5 +43,6 @@ cast(region_id as INT) as region_id,
 cast(region_name as STRING) as region_name,
 cast(country as STRING) as country
 
-from workspace.bronze.regions;
+from stream(workspace.bronze.regions);
+
 
