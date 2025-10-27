@@ -1,4 +1,4 @@
-CREATE OR REPLACE MATERIALIZED VIEW silver.cleansed_sales_data
+CREATE OR REPLACE MATERIALIZED VIEW worksapce.silver.cleansed_sales_data
 (
 	CONSTRAINT sales_quantity_check EXPECT(quantity is not null) ON VIOLATION DROP ROW,
 	CONSTRAINT sales_channel_check EXPECT(channel is not null) ON VIOLATION DROP ROW,
@@ -29,7 +29,7 @@ r.country,
 FS.quantity * p.price as revenue
 
 from
-lakeflow_dlt_uc.sales FS
-left join lakeflow_dlt_uc.customers c on FS.customer_id = c.customer_id
-left join lakeflow_dlt_uc.products p on FS.product_id = p.product_id
-left join lakeflow_dlt_uc.regions r on FS.region_id = r.region_id;
+workspace.sales FS
+left join workspace.customers c on FS.customer_id = c.customer_id
+left join workspace.products p on FS.product_id = p.product_id
+left join workspace.regions r on FS.region_id = r.region_id;
