@@ -1,9 +1,9 @@
-bronze_transformation.sql
+--bronze_transformation.sql
 
 CREATE STREAMING LIVE TABLE bronze.fact_sales
 AS
 select * from cloud_files(
-'/Volumes/lakeflow_dlt_uc/landing_zone/fact_and_dimensions_files/fact_sales',
+'/Volumes/workspace/landing_zone/fact_and_dimensions_files/fact_sales',
 'csv',
 map('header','true')
 );
@@ -11,7 +11,7 @@ map('header','true')
 CREATE STREAMING LIVE TABLE bronze.dim_products
 AS
 select * from cloud_files(
-'/Volumes/lakeflow_dlt_uc/landing_zone/fact_and_dimensions_files/dim_products',
+'/Volumes/workspace/landing_zone/fact_and_dimensions_files/dim_products',
 'csv',
 map('header','true')
 );
@@ -19,7 +19,7 @@ map('header','true')
 CREATE STREAMING LIVE TABLE bronze.dim_customers
 AS
 select * from cloud_files(
-'/Volumes/lakeflow_dlt_uc/landing_zone/fact_and_dimensions_files/dim_customers',
+'/Volumes/workspace/landing_zone/fact_and_dimensions_files/dim_customers',
 'csv',
 map('header','true')
 );
@@ -27,8 +27,9 @@ map('header','true')
 CREATE STREAMING LIVE TABLE bronze.dim_regions
 AS
 select * from cloud_files(
-'/Volumes/lakeflow_dlt_uc/landing_zone/fact_and_dimensions_files/dim_regions',
+'/Volumes/workspace/landing_zone/fact_and_dimensions_files/dim_regions',
 'csv',
 map('header','true')
 );
+
 
